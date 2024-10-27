@@ -1,1 +1,83 @@
-<p>under construction</p>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.8.1.min.css"
+/>
+<style>
+  .avatar {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+  }
+  blockquote {
+    font-style: italic;
+  }
+</style>
+<section>
+  <article>
+    <figure>
+      <img
+        class="avatar"
+        src="https://avatars.githubusercontent.com/u/8146876"
+      />
+    </figure>
+    <h1>kawarimidoll</h1>
+    <blockquote>
+      は〜〜安全圏から他人の恋愛のゴタゴタを観測して楽しみてぇな〜〜〜
+      <footer>
+        - kawarimidoll,
+        <ex-link>
+          https://bsky.app/profile/kawarimidoll.bsky.social/post/3l5tr342umc2o
+        </ex-link>
+      </footer>
+    </blockquote>
+    <h2>Links</h2>
+    <dl>
+      <dt>GitHub</dt>
+      <dd>
+        <ex-link>https://github.com/kawarimidoll</ex-link>
+      </dd>
+      <dt>Bluesky</dt>
+      <dd>
+        <ex-link>https://bsky.app/profile/kawarimidoll.bsky.social</ex-link>
+      </dd>
+      <dt>Zenn</dt>
+      <dd>
+        <ex-link>https://zenn.dev/kawarimidoll</ex-link>
+      </dd>
+      <dt>しずかなインターネット</dt>
+      <dd>
+        <ex-link>https://sizu.me/kawarimidoll</ex-link>
+      </dd>
+      <dt>Exercism</dt>
+      <dd>
+        <ex-link>https://exercism.org/profiles/kawarimidoll</ex-link>
+      </dd>
+      <dt>YouTube</dt>
+      <dd>
+        <ex-link>https://youtube.com/@kawarimidoll</ex-link>
+      </dd>
+    </dl>
+    <footer>
+      The source of this page is
+      <ex-link text="here">https://github.com/kawarimidoll/kawarimidoll.github.io</ex-link>.
+      This page is styled by
+      <ex-link text="tacit">https://yegor256.github.io/tacit/</ex-link>.
+    </footer>
+  </article>
+</section>
+<script>
+  class ExLink extends HTMLElement {
+    constructor() {
+      super();
+      const shadow = this.attachShadow({ mode: "open" });
+      const url = this.textContent;
+      const link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.textContent = this.getAttribute("text") || url;
+      shadow.appendChild(link);
+    }
+  }
+
+  customElements.define("ex-link", ExLink);
+</script>
