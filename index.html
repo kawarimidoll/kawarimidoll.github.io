@@ -74,23 +74,18 @@
 
   const avagarImg = document.querySelector(".avatar img");
   const root = document.documentElement;
-  avagarImg.addEventListener("click", () => {
-    const lightColor = getComputedStyle(root)
-      .getPropertyValue("--light-color")
-      .trim();
-    const lightGray = getComputedStyle(root)
-      .getPropertyValue("--light-gray")
-      .trim();
-    const darkColor = getComputedStyle(root)
-      .getPropertyValue("--dark-color")
-      .trim();
-    const darkGray = getComputedStyle(root)
-      .getPropertyValue("--dark-gray")
-      .trim();
 
-    root.style.setProperty("--light-color", darkColor);
-    root.style.setProperty("--dark-color", lightColor);
-    root.style.setProperty("--light-gray", darkGray);
-    root.style.setProperty("--dark-gray", lightGray);
+  function getRootProperty(name) {
+    return getComputedStyle(root).getPropertyValue(name).trim();
+  }
+  function swapRootProperty(left, right) {
+    const leftProp = getRootProperty(left);
+    const rightProp = getRootProperty(right);
+    root.style.setProperty(right, leftProp);
+    root.style.setProperty(left, rightProp);
+  }
+  avagarImg.addEventListener("click", () => {
+    swapRootProperty("--light-color", "--dark-color");
+    swapRootProperty("--light-gray", "--dark-gray");
   });
 </script>
