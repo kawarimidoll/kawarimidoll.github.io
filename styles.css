@@ -1,3 +1,8 @@
-h1 {
-  text-decoration: underline;
+.avatar {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+}
+blockquote {
+  font-style: italic;
 }
