@@ -4,37 +4,29 @@ function getRootProperty(name) {
   return getComputedStyle(root).getPropertyValue(name).trim();
 }
 
-const rootCssVariables = Array.from(document.styleSheets)
+// ref: https://stackoverflow.com/a/76448868
+const toggleTargetKeys = Array.from(document.styleSheets)
   .flatMap((styleSheet) => Array.from(styleSheet.cssRules))
-  .filter(
-    (cssRule) =>
-      cssRule instanceof CSSStyleRule && cssRule.selectorText === ":root",
+  .flatMap((cssRule) =>
+    cssRule.selectorText === ":root" ? Array.from(cssRule.style) : []
   )
-  .flatMap((cssRule) => Array.from(cssRule.style))
-  .filter((style) => style.startsWith("--"));
+  .flatMap((style) =>
+    style.startsWith("--light-") &&
+      !!getRootProperty(style.replace("light", "dark"))
+      ? [style.replace("--light-", "")]
+      : []
+  );
 
-const toggleTargets = [];
-for (const cssVar of rootCssVariables) {
-  if (!cssVar.startsWith("--light-")) {
-    continue;
-  }
-  const key = cssVar.replace("--light-", "");
-  const darkValue = getRootProperty(`--dark-${key}`);
-  if (!darkValue) {
-    continue;
-  }
-  toggleTargets.push(key);
-}
-
-const avagarImg = document.querySelector(".avatar img");
-avagarImg.addEventListener("click", () => {
-  for (const key of toggleTargets) {
-    // swap light and dark
-    const lightKey = `--light-${key}`;
-    const darkKey = `--dark-${key}`;
-    const lightValue = getRootProperty(lightKey);
-    const darkValue = getRootProperty(darkKey);
-    root.style.setProperty(lightKey, darkValue);
-    root.style.setProperty(darkKey, lightValue);
-  }
+[...document.querySelectorAll(".toggle-light-dark")].forEach((e) => {
+  e.addEventListener("click", () => {
+    for (const key of toggleTargetKeys) {
+      // swap light and dark
+      const lightKey = `--light-${key}`;
+      const darkKey = `--dark-${key}`;
+      const lightValue = getRootProperty(lightKey);
+      const darkValue = getRootProperty(darkKey);
+      root.style.setProperty(lightKey, darkValue);
+      root.style.setProperty(darkKey, lightValue);
+    }
+  });
 });
