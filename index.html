@@ -1,4 +1,7 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no"
+/>
 <link rel="stylesheet" href="./styles.css" />
 <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
 <section>
@@ -8,6 +11,7 @@
     </figure>
     <h1 class="text-center">kawarimidoll</h1>
     <p class="text-center">カワリミ人形</p>
+    <p class="text-center text-small">Tap icon to taggle light/dark.</p>
     <blockquote>
       は〜〜安全圏から他人の恋愛のゴタゴタを観測して楽しみてぇな〜〜〜
       <footer>
@@ -62,10 +66,31 @@
       link.href = url;
       link.target = "_blank";
       link.textContent = this.getAttribute("text") || url;
-      link.style = "word-break: break-all;"
+      link.style = "word-break: break-all;";
       shadow.appendChild(link);
     }
   }
-
   customElements.define("ex-link", ExLink);
+
+  const avagarImg = document.querySelector(".avatar img");
+  const root = document.documentElement;
+  avagarImg.addEventListener("click", () => {
+    const lightColor = getComputedStyle(root)
+      .getPropertyValue("--light-color")
+      .trim();
+    const lightGray = getComputedStyle(root)
+      .getPropertyValue("--light-gray")
+      .trim();
+    const darkColor = getComputedStyle(root)
+      .getPropertyValue("--dark-color")
+      .trim();
+    const darkGray = getComputedStyle(root)
+      .getPropertyValue("--dark-gray")
+      .trim();
+
+    root.style.setProperty("--light-color", darkColor);
+    root.style.setProperty("--dark-color", lightColor);
+    root.style.setProperty("--light-gray", darkGray);
+    root.style.setProperty("--dark-gray", lightGray);
+  });
 </script>
