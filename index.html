@@ -5,6 +5,8 @@
 />
 <link rel="stylesheet" href="./styles.css" />
 <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<script src="./ex_link.js" defer></script>
+<script src="./toggle_light_dark.js" defer></script>
 <section>
   <article>
     <figure class="avatar">
@@ -57,36 +59,3 @@
     </footer>
   </article>
 </section>
-<script>
-  class ExLink extends HTMLElement {
-    constructor() {
-      super();
-      const shadow = this.attachShadow({ mode: "open" });
-      const url = this.textContent;
-      const link = document.createElement("a");
-      link.href = url;
-      link.target = "_blank";
-      link.textContent = this.getAttribute("text") || url;
-      link.style = "word-break: break-all;";
-      shadow.appendChild(link);
-    }
-  }
-  customElements.define("ex-link", ExLink);
-
-  const avagarImg = document.querySelector(".avatar img");
-  const root = document.documentElement;
-
-  function getRootProperty(name) {
-    return getComputedStyle(root).getPropertyValue(name).trim();
-  }
-  function swapRootProperty(left, right) {
-    const leftProp = getRootProperty(left);
-    const rightProp = getRootProperty(right);
-    root.style.setProperty(right, leftProp);
-    root.style.setProperty(left, rightProp);
-  }
-  avagarImg.addEventListener("click", () => {
-    swapRootProperty("--light-color", "--dark-color");
-    swapRootProperty("--light-gray", "--dark-gray");
-  });
-</script>
