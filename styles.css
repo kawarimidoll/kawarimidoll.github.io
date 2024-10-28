@@ -11,7 +11,6 @@
 body {
   color: light-dark(var(--light-color), var(--dark-color));
   background-color: light-dark(var(--dark-color), var(--light-color));
-
   padding: 1rem;
   font:
     normal 400 normal 1.125rem / 1.85625rem system-ui,
@@ -68,6 +67,7 @@ blockquote {
   border-left: 4px solid light-dark(var(--light-gray), var(--dark-gray));
   font-style: italic;
   padding: 0 1rem;
+  margin: 0;
   footer {
     font-size: 0.8rem;
     margin: 0;
