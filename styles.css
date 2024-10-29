@@ -71,6 +71,19 @@ a {
   &:visited {
     color: light-dark(var(--light-visited), var(--dark-visited));
   }
+
+  &:hover {
+    animation: mymove 3s infinite;
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* underline animation */
+/* https://www.w3schools.com/cssref/tryit.php?filename=trycss_anim_text-decoration-color */
+@keyframes mymove {
+  50% {
+    text-decoration-color: #ffaff3;
+  }
 }
 
 footer {
