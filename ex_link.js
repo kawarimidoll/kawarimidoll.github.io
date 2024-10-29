@@ -6,6 +6,7 @@ class ExLink extends HTMLElement {
     link.href = url;
     link.target = "_blank";
     link.textContent = this.getAttribute("text") || url;
+    link.className = "moving-underline";
     this.replaceWith(link);
   }
 }

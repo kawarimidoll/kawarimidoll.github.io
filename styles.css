@@ -87,6 +87,7 @@ blockquote {
   margin: 0;
   footer {
     font-size: 0.8rem;
+    padding: 0;
     margin: 0;
     border: none;
     text-align: right;
