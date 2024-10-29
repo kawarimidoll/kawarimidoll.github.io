@@ -116,6 +116,24 @@ blockquote {
     height: 260px;
     border-radius: 50%;
   }
+
+  /* https://scrapbox.io/teamlab-frontend/CSS+SVG%E3%81%A7%E5%86%86%E4%B8%8A%E3%81%AB%E6%96%87%E5%AD%97%E3%82%92%E9%85%8D%E7%BD%AE%E3%81%99%E3%82%8B */
+  div.circle-text {
+    position: absolute;
+    width: 290px;
+    height: 290px;
+    rotate: 110deg;
+    svg {
+      overflow: visible;
+    }
+    path {
+      fill: none;
+    }
+    text {
+      font-size: 0.3rem;
+      fill: light-dark(var(--light-gray), var(--dark-gray));
+    }
+  }
 }
 
 /* https://photoshopvip.net/156601 */
