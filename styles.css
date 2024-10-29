@@ -4,14 +4,20 @@
 
   --light-color: #1a1919;
   --light-gray: #bbbbcb;
+  --light-link: #1218ee;
+  --light-visited: #551a8b;
   --dark-color: #fbfdfb;
   --dark-gray: #666696;
+  --dark-link: #4376ef;
+  --dark-visited: #8e40d6;
 }
 
 body {
   color: light-dark(var(--light-color), var(--dark-color));
   background-color: light-dark(var(--dark-color), var(--light-color));
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
   padding: 1rem;
   font:
     normal 400 normal 1.125rem / 1.85625rem system-ui,
@@ -59,6 +65,15 @@ dl {
     padding-top: 0.5rem;
   }
 }
+a,
+ex-link::part(a) {
+  word-break: break-all;
+  color: light-dark(var(--light-link), var(--dark-link));
+}
+a,
+ex-link::part(a):visited {
+  color: light-dark(var(--light-visited), var(--dark-visited));
+}
 
 footer {
   padding: 1rem;
@@ -79,6 +94,7 @@ blockquote {
     text-align: right;
   }
 }
+
 .text-center {
   text-align: center;
 }
