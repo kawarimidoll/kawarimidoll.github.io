@@ -65,14 +65,12 @@ dl {
     padding-top: 0.5rem;
   }
 }
-a,
-ex-link::part(a) {
+a {
   word-break: break-all;
   color: light-dark(var(--light-link), var(--dark-link));
-}
-a,
-ex-link::part(a):visited {
-  color: light-dark(var(--light-visited), var(--dark-visited));
+  &:visited {
+    color: light-dark(var(--light-visited), var(--dark-visited));
+  }
 }
 
 footer {
