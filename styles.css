@@ -76,12 +76,19 @@ a {
     animation: mymove 3s infinite;
     text-decoration-thickness: 2px;
   }
-  &[href^="http"]:after,
-  &[href^="//"]:after {
+
+  /* https://www.rectus.co.jp/archives/329 */
+  &[href^="http"]:after {
     display: inline-block;
     margin-left: 2px;
     content: url("./outbound.svg");
     width: 1em;
+  }
+  &[href^="https://kawarimidoll.github.io"]:after {
+    margin: inherit;
+    margin-left: inherit;
+    content: "";
+    width: inherit;
   }
 }
 
