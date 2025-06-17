@@ -32,6 +32,10 @@
     ]
   }
 </script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
+  crossorigin="anonymous"
+></script>
 <script src="./ex_link.js" defer></script>
 <script src="./toggle_light_dark.js" defer></script>
 <script src="./typing_effect.js" defer></script>
@@ -62,6 +66,24 @@
       </ex-link>
     </footer>
   </blockquote>
+  <div class="icon-list">
+    <div>
+      <div>🧑‍💻</div>
+      <span class="text-small">Neovim</span>
+    </div>
+    <div>
+      <div>🧗</div>
+      <span class="text-small">ボルダリング</span>
+    </div>
+    <div>
+      <div>🏠</div>
+      <span class="text-small">宅建士</span>
+    </div>
+    <div>
+      <div>🧑‍🎓</div>
+      <span class="text-small">放送大学</span>
+    </div>
+  </div>
   <h2 id="links">Links</h2>
   <dl>
     <dt>GitHub</dt>
@@ -137,3 +159,6 @@
     >https://github.com/kawarimidoll/kawarimidoll.github.io</ex-link
   >.
 </footer>
+<script>
+  twemoji.parse(document.body);
+</script>
