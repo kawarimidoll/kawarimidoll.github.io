@@ -5,7 +5,7 @@ https://kawarimidoll.github.io
 ## develop
 
 ```sh
-deno run --allow-read=. --allow-net=0.0.0.0:8000 server.ts
+deno task dev
 ```
 
 ## ref

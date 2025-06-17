@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-read=. --allow-net=127.0.0.1:8033 server.ts",
+    "lint": "deno lint --ignore=.well-known",
+    "fmt": "deno fmt --ignore=.well-known"
+  }
+}
