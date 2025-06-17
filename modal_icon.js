@@ -7,6 +7,7 @@ class ModalIcon extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setupEventListeners();
+    this.applyTwemoji();
   }
 
   render() {
@@ -33,6 +34,13 @@ class ModalIcon extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                padding: 0;
+            }
+
+            .icon-button img {
+                width: 32px;
+                height: 32px;
+                pointer-events: none;
             }
 
             .icon-button:hover {
@@ -150,6 +158,23 @@ class ModalIcon extends HTMLElement {
     });
   }
 
+  applyTwemoji() {
+    // Twemojiが読み込まれているかチェック
+    if (typeof twemoji !== "undefined") {
+      const iconButton = this.shadowRoot.querySelector(".icon-button");
+      if (iconButton) {
+        // TwemojiをShadow DOM内の要素に適用
+        twemoji.parse(iconButton, {
+          folder: "svg",
+          ext: ".svg",
+        });
+      }
+    } else {
+      // Twemojiが読み込まれていない場合は少し待ってリトライ
+      setTimeout(() => this.applyTwemoji(), 100);
+    }
+  }
+
   // 属性変更時の処理
   static get observedAttributes() {
     return ["emoji", "title"];
@@ -159,6 +184,7 @@ class ModalIcon extends HTMLElement {
     if (oldValue !== newValue) {
       this.render();
       this.setupEventListeners();
+      this.applyTwemoji();
     }
   }
 }
