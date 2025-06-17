@@ -15,9 +15,7 @@
 body {
   color: light-dark(var(--light-color), var(--dark-color));
   background-color: light-dark(var(--dark-color), var(--light-color));
-  transition:
-    background-color 0.5s ease,
-    color 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
   padding: 1rem;
   font:
     normal 400 normal 1.125rem / 1.85625rem system-ui,
@@ -121,9 +119,6 @@ blockquote {
 
 .text-center {
   text-align: center;
-}
-.text-small {
-  font-size: 0.8rem;
 }
 
 .avatar {
