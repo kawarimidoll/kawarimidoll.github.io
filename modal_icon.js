@@ -5,6 +5,10 @@ class ModalIcon extends HTMLElement {
   }
 
   connectedCallback() {
+    // 内容を隠して保存
+    this._content = this.innerHTML;
+    this.innerHTML = "";
+
     this.render();
     this.setupEventListeners();
     this.applyTwemoji();
@@ -13,7 +17,7 @@ class ModalIcon extends HTMLElement {
   render() {
     const emoji = this.getAttribute("emoji") || "📄";
     const title = this.getAttribute("title") || "モーダル";
-    const content = this.innerHTML;
+    const content = this._content || "";
 
     this.shadowRoot.innerHTML = `
         <style>
